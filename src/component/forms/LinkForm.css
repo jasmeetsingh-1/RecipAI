@@ -1,0 +1,115 @@
+/* LinkForm.css */
+
+.ra-linkForm-formik-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.ra-linkForm-wrapper.ra-showCase-error {
+  transform: translateY(-150%);
+  z-index: 9;
+}
+
+.ra-linkForm-wrapper {
+  width: 100%;
+  height: fit-content;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 1s ease-in-out;
+}
+
+.ra-link-form-holder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ra-linkForm-row {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ra-linkForm-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.ra-linkForm-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.ra-linkForm-error-span {
+  position: absolute;
+  bottom: -20px;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.ra-linkForm-buttonHolder {
+  text-align: right;
+}
+
+.ra-linkForm-buttonHolder>button {
+  outline: none;
+  border: lightblue;
+  color: darkblue;
+  padding: 10px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.ra-linkForm-buttonHolder>button:hover {
+  color: #efefef;
+  background-color: darkblue;
+}
+
+.ra-invalidLinkError-wrapper {
+  position: absolute;
+}
+
+section.ra-invalidLinkError-message {
+  padding: 0px 20px;
+  text-align: center;
+  color: #0000008f;
+}
+
+.ra-invalidLinkError-message span {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000e6;
+}
+
+.ra-invalidLinkError-message span::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  border-radius: 25px;
+  transform: scaleX(0);
+  background-color: #d3e97a;
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.ra-invalidLinkError-message span:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
