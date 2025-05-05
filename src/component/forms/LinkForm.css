@@ -104,7 +104,7 @@ section.ra-invalidLinkError-message {
   width: 100%;
   border-radius: 25px;
   transform: scaleX(0);
-  background-color: #d3e97a;
+  background-color: darkblue;
   transform-origin: right;
   transition: transform 0.3s ease;
 }

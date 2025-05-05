@@ -1,0 +1,4 @@
+request must have the secretKey
+
+/ra-api
+    /content-validate -> validate if link excitted based on the platform passed

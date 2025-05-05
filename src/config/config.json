@@ -1,0 +1,4 @@
+{
+    "backendUrl": "http://localhost:3030",
+    "apiSecretKey": "12345"
+}

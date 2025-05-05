@@ -1,5 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./LinkForm.css";
+import axios from "axios";
+import config from '../../config/config.json'; // adjust the path as necessary
 import invalidLinkAnimation from "../../assets/animations/invalidLinkAnimation.json";
 
 import { Field, Form, Formik } from "formik";
@@ -15,6 +17,7 @@ const LinkFormFormValidator = Yup.object({
 });
 
 function LinkForm() {
+  const { backendUrl, apiSecretKey } = config;
   const [invalidLinkError, setInvalidLinkError] = useState(false);
   const resetFormRef = useRef(null); 
 
@@ -31,13 +34,42 @@ function LinkForm() {
     return regex.test(url.trim());
   };
 
+  const checkIfVideoExist = (text, platform = "youtube") => {
+    let payload = {
+      platform:platform,
+      content:text,
+      secretKey:apiSecretKey
+    };
+    axios.post(`${backendUrl}/ra-api/content-validate`, payload)
+    .then((result)=>{
+        console.log("resilt >>>>>>>", result)
+        fetchContent(text, "youtube");
+    }).catch((error)=>{
+        console.log("some error in product api", error);
+    })
+  }
+
+  const fetchContent = (text, platform = "youtube") => {
+    let payload = {
+      platform:platform,
+      content:text,
+      secretKey:apiSecretKey
+    };
+    axios.post(`${backendUrl}/ra-api/fetch-content`, payload)
+    .then((result)=>{
+        console.log("resilt >>>>>>>", result)
+    }).catch((error)=>{
+        console.log("some error in product api", error);
+    })
+  }
+
   const linkFormOnSubmitValidator = (values, resetForm) => {
     const isValidInput = isValidMediaURL(values.linkInput);
     setInvalidLinkError(!isValidInput);
     if (!isValidInput) {
       //link is invalid
     }
-    console.log({ isValidInput });
+    checkIfVideoExist(values.linkInput);
   };
 
   return (
